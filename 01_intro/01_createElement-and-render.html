@@ -1,0 +1,44 @@
+<!-- https://ko.legacy.reactjs.org/docs/getting-started.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- react 를 구현하기 위한 lib 이다. -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script>
+      // React.createElement 를 사용하여 h1번 태그를 표현하는 엘리먼트를 만들 수 있다.
+      // 첫 번째 인자 : 만들려는 elements 의 타입을 문자열로 정의한다.
+      // 두 번째 인자 : 만드는 element의 프로퍼티를 표현한다.
+      // 세 번째 인자 : element의 자식 노드를 표현한다.
+      // 랜더링 과정에서 리액트는 이 엘리먼트를 실제 dom 엘리먼트로 변환한다.
+      // 리액트 엘리먼트는 단지 리액트에게 dom 엘리먼트를 구성하는 방법을 알려주는 자바스크립트의 객체에 불과하다.
+      // (실제 dom이 아닌 가상 dom 개념)
+
+      /* 
+        주의 사항 : 엘리먼트 생성 시 어트리뷰트 노드에 해당하는 곳은 객체를 인수로 던져야 하고 class 어트리뷰트에 해당하는 값은
+                    className 이라는 프로퍼티 키를 써야한다.
+      */
+     const greetingElement = React.createElement('h1', {className:'greeting'}, "hello world");
+     const textElement = React.createElement("h3", {id:"name"}, "안녕하세요, 홍길동 입니다.");
+
+    /* 
+
+     const domContainer = document.getElementById('root');
+     const root = ReactDOM.createRoot(domContainer);
+     root.render(greetingElement);
+        react 16 버전 이전의 리액트는 한 엘리먼트만 렌더링 할 수 있었으나, 이후 버전에서는 배열을 랜더링 할 수 있도록 진화함.
+     */
+    
+     ReactDOM.createRoot(document.getElementById("root")).render([greetingElement,textElement]);
+
+
+    </script>
+</body>
+</html>
