@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+     const {useState} = React;
+
+     function Number(){
+      const [number, setNumber] = useState(0);
+      const [color, setColor] = useState("black");
+
+      return (
+        <>
+            <h1 style={{color}}>number : {number}</h1> 
+            <button onClick={() => setNumber(number+1)}>+1</button>
+            <button onClick={() => setNumber(number-1)}>-1</button>
+            <button onClick={() => setColor("green")}>color</button>
+        </>
+      )
+     }
+     ReactDOM.createRoot(document.getElementById("root")).render(<Number/>);
+  </script>
+</body>
+</html>
