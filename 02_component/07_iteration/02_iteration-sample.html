@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const {useState} = React;
+
+    function App(){
+
+      // state에 초기값으로 객체 배열을 할당함
+      const [names, setNames] = useState([
+        {id:1,name:'이순신'},
+        {id:2, name:'유관순'},
+        {id:3, name:'홍길동'}
+
+      ]);
+      const [inputText, setInputText] = useState("");
+      const [nextId, setNextId] = useState(4);
+
+      const onChangeHandler = e => setInputText(e.target.value);
+
+      // 두개 이상의 배열을 병합하는데 사용 - concat
+      const onClickHandler = () => {
+        const changeNames = names.concat({
+          id:nextId,
+          name:inputText
+        });
+
+        setNextId(nextId + 1);
+        // 합친 배열을 names에 할당함
+        setNames(changeNames);
+        setInputText("");
+      }
+      const onRemove = id =>{
+        // filter 조건이 true 인 요소를 반환하고 true 가 아닌 요소를 반환하지 않음
+        // 즉 전달된 매개변수와 값이 같은 값을 제거하고 반환함.
+        const changeNames = names.filter(name => name.id !== id);
+        // 반환된 값으로 초기화
+        setNames(changeNames);
+      }
+      // names 의 요소를 선택하여 <li>값</li> 형식으로 엘리먼트를 반환함
+      const nameList = names.map(name => {
+                        return (<li key={name.id} onDoubleClick={()=> onRemove(name.id)}> {name.name} </li>)});
+      
+      return (
+        <>
+            <input value={inputText} onChange={onChangeHandler}/>
+            <button onClick={onClickHandler}>추가</button>
+            <ul>
+              {nameList}
+            </ul>
+        </>
+      )
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+  </script>
+</body>
+</html>
