@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <!-- 
+        컴포넌트 라이프 사이클 메소드는 총 9가지가 있다.
+        라이프 사이클 메소드는 클래스형 컴포넌트에서만 사용이 가능하다.
+        라이프 사이클은 총 3가지 카테고리인 마운트, 업데이트, 언마운트로 나뉜다.
+
+        마운트 : dom이 생성되고 웹 브라우저상 나타나는 것을 마운트라고 한다.
+        업데이트 : 컴포넌트의 상태가 바뀌는 경우를 의미하며, 총 4가지의 업데이트 상황이 있다.
+                  props변경, state 변경, 부모 컴포넌트 리렌더링, this.forceupdate로 강제 렌더링 트리거
+        언마운트 : 컴포넌트를 dom에서 제거하는 것을 언마운트 라고 한다.
+
+        각 카테고리 별 동작하는 라이프 사이클 메소드의 흐름을 보며 하나씩 확인해 본다.
+
+        마운트 시 
+            constructor -> getDerivedStateFromProps -> render -> componentDidMount 순으로 호출된다.
+     -->
+     <div id="root"></div>
+     <script type="text/babel">
+        class Greeting extends React.Component {
+
+          constructor (props){
+            super(props);
+            console.log("constructor");
+
+            this.state={
+              text:'초기값'
+            };
+          }
+
+          static getDerivedStateFromProps(nextProps, nextState){
+            /* 
+                리액트 16.3 이후에 새로 만든 라이프 사이클 메소드이다..
+                props 로 받아온 값을 state 에 동기화 시키는 용도로 사용하며, 마운트 업데이트 시 호출된다..
+            */
+           console.log("getDerivedStateFromProps");
+
+           return null;
+          }
+
+          // 3. 리액트 엘리먼트를 가상돔으로 구성하고 실제 렌더트리까지 구성하는 시점에 호출되는 메소드이다.
+          render(){
+            console.log("render");
+            return(
+              /* 
+                  랜더링 될 컴포넌트의 형태를 리액트 컴포넌트로 반환한다..
+                  라이프 사이클 메소드 중 유일한 필수 메소드이다..
+                  render 메소드는 this.props와 this.state 에 접근할 수 있다..
+                  아무런 컴포넌트도 보여주고 싶지 않다면 null 혹은 falsy 값을 반환한다..
+
+                  주의 사항
+                  1. 이 메소드 내에서는 이벤트 설정이 아닌 곳에서 setState를 사용하면 안된다..
+                  this.setState({
+                    text:'수정'
+                  });
+                  2. 브라우저의 dom에 접근해서도 안된다..
+                  Dom 정보를 가지고 오거나 state 에 변화를 줄 때 componentDidMount 에서 처리해야 한다..
+              */
+                  <>
+                      <h1>현재의 상태 값, {this.state.text}</h1>
+                  </>
+            )
+          }
+
+          componentDidMount(){
+            /* 
+              ( 백엔드 api 호출하는 곳  -  페츠 등)
+              컴포넌트를 다 만든 후에 첫 렌더링을 마치고 나면 호출된다.. (dom 이 그려지고 난 후, mount 이후)
+              다른 자바스크립트 라이브러리 또는 프레임워크 함수를 호출하거나 이벤트 등록, setTimeout, setInterval,
+              네트워크 요청과 같은 비동기 작업을 처리하면 된다..
+            */
+            console.log("componentDidMount");
+          }
+        }
+        ReactDOM.createRoot(document.getElementById("root")).render(<Greeting/>);
+
+     </script>
+</body>
+</html>
