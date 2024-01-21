@@ -20,7 +20,8 @@ export const Counter = () => {
   )
 }
 
-const reducer = (state, action) => {
+const reducer = (state, action) => { // 여기서 state 는 앞으로 컴포넌트에서 사용 할 수 있는 상태를 가르키게 되고, 
+                                     // dispatch 는 액션을 발생시키는 함수라고 이해하면된다.
   switch(action.type){
     case 'DECREMENT':
         return {value: state.value -1}

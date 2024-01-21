@@ -1,9 +1,16 @@
 import { useReducer } from "react"
 
 
-const reducer = (state,action)=>{
+const reducer = (state,action)=>{             // 같은 기능을 하는 함수를 한번에 설정해 어디서나 사용할 수 있음.
   console.log(action);
   return {
+    ...state,
+    [action.name] : action.value
+  }
+}
+
+const reducer2 = (state,action)=>{
+  return{
     ...state,
     [action.name] : action.value
   }

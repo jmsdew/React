@@ -16,10 +16,9 @@ export const Question = () => {
 
   useEffect(()=>{
     if(input === answer1){
-      setIsDone(true);
       alert("정답입니다");
-    }else{
       setInput("");
+    }else{
      alert("환영합니다");
     }
   },[isDone])
