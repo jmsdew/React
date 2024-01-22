@@ -9,12 +9,7 @@ const reducer = (state,action)=>{             // 같은 기능을 하는 함수�
   }
 }
 
-const reducer2 = (state,action)=>{
-  return{
-    ...state,
-    [action.name] : action.value
-  }
-}
+
 
 export const Input = () =>{
   const [state, dispatch] = useReducer(reducer,{
