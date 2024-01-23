@@ -18,6 +18,10 @@ import CallBackComponent from "./04_useCallBack/03_composited-component";
 import CounterRef from "./05_useRef/01_problem";
 import UseRefCounter from "./05_useRef/02_resolve-as-useRef";
 import LoginComponent from "./05_useRef/03_inputref";
+import Header from "./06_useContext/01-props-drilling";
+import Page from "./06_useContext/01-props-drilling";
+import ContextContainer from "./06_useContext/02_useContext";
+import CustomHooks from "./07_custom-hooks/02_custom-hook";
 
 
 function App() {
@@ -45,7 +49,10 @@ function App() {
 {/*           <CallBackComponent/> */}
 {/*           <CounterRef/> */}
        {/*      <UseRefCounter/> */}
-       <LoginComponent/>
+      {/*  <LoginComponent/> */}
+     {/*      <Page/> */}
+     {/* <ContextContainer/> */}
+     <CustomHooks/>
     </>
   );
 }
