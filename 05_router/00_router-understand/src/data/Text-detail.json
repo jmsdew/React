@@ -1,23 +1,34 @@
 [
    {
-      "textCode":1,
-      "textName":"점심먹고싶다",
-      "categoryName":"공부",
-      "texts": "점심먹고싶다 지금 당장"
+      "textCode":4,
+      "textName":"올리버 스킵",
+      "categoryName":"미드필더",
+      "texts": "토트넘 유스 출신 수비형 미드필더"
   },
   {
-    "textCode":2,
-    "textName":"게시글 두번째",
-    "categoryName":"공부",
-    "texts": "게시글 두 번째 입니다. 12345667889"
+    "textCode":5,
+    "textName":"피에르 에밀 호이비에르",
+    "categoryName":"미드필더",
+    "texts": "소튼에서 이적 후 꾸준히 든든한 모습을 보여줬지만, 포스테코글루 감독 아래에서는 부진하는 모습. 주전에서 밀려남 아틀레티코, 유벤투스 등 링크 나는중"
   },
   {
-    "textCode":3,
-    "textName":"게시글 세번째",
-    "categoryName":"공지",
-    "texts": "세 번째 게시글 입니다. ㄼ데ㅣㅏ;르ㅑㅔㅂ둛대ㅔㅜㅎ럅다ㅜ헤ㅐㅂ둫라ㅔㅂ둫래ㅔㅣㅑㅂ두힙ㄷ"
+    "textCode":6,
+    "textName":"라두 드라구신",
+    "categoryName":"수비수",
+    "texts": "제노아에서 이적한 190cm의 거구 센터백. 21세의 어린 나이. 앞으로가 기대된다."
+  },
+  {
+    "textCode":7,
+    "textName":"손흥민",
+    "categoryName":"공격수",
+    "texts": "자타공인 클럽 레전드 공격수. 토트넘의 주장. 우리흥 말이 필요없다."
+  },
+  {
+    "textCode":8,
+    "textName":"이브 비수마",
+    "categoryName":"미드필더",
+    "texts": "브라이튼에서의 좋은 활약으로 토트넘에 이적했지만, 콘테 체제에서 부진하는 모습을 보이다가 시즌 초 포스테코글루 사단 체제에서 부활. 하지만 요 근래 폼이 떨어짐"
   }
-
 
 
 ]
