@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/redux@4.2.0/dist/redux.js"></script>
+  <script src="https://unpkg.com/react-redux@8.0.4/dist/react-redux.js"></script>
+  <script src="https://unpkg.com/redux-actions@2.6.5/dist/redux-actions.js"></script>
+  <script src="https://unpkg.com/redux-logger@3.0.6/dist/redux-logger.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    /* 
+        미리 만들어져 있는 미들웨어 사용 및 여러 개의 미들웨어 사용하기
+        로깅 미들웨어로 가장 많이 상요되는 미들웨어는 redux-logger 미들웨어이다.
+    */
+
+    const consoleLoggingMiddleWare = store => next => action => {
+      console.log(action);
+      const result = next(action);
+
+      return result;
+    }
+
+    // redux-logger 미들웨어
+    const logger = reduxLogger.createLogger();
+    
+    // module
+    const {createActions, handleActions} = ReduxActions;
+
+    const initialState = 0;
+
+    const INCREMENT = "count/INCREASE";
+    const DECREMENT = "count/DECREASE";
+
+    const {count : {increase, decrease}} = createActions({
+      [INCREMENT] : (amount = 1) => ({incrementValue:amount}),
+      [DECREMENT] : (amount = 1) => ({decrementValue:amount})
+    })
+
+    /* 리듀서 */
+    const reducer = handleActions({
+      [INCREMENT] : (state, {payload : {incrementValue}}) =>{
+        return state + incrementValue;
+      },
+      [DECREMENT] : (state, {payload : {decrementValue}}) => {
+        return state - decrementValue;
+      }
+    }, initialState);
+
+    const {useSelector, useDispatch} = ReactRedux;
+
+    const App = () => {
+      const count = useSelector(state => state);
+      const dispatch = useDispatch();
+
+      const increaseCount = () => {
+        dispatch(increase());
+      }
+
+      const decreaseCount = () => {
+        dispatch(decrease());
+      }
+
+      return (
+        <>
+            <h1>count : {count}</h1>
+            <button onClick={increaseCount}>+1</button>
+            <button onClick={decreaseCount}>-1</button>
+        </>
+      )
+    }
+
+    const {createStore, applyMiddleware} = Redux;
+
+    const store = createStore(reducer, applyMiddleware(consoleLoggingMiddleWare, logger));
+
+    const {Provider} = ReactRedux;
+    ReactDOM.createRoot(document.getElementById("root")).render(
+      <Provider store={store}>
+        <App/>  
+      </Provider>
+    )
+  </script>
+</body>
+</html>
