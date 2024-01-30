@@ -1,7 +1,7 @@
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { callGetMenuListAPI } from "../../apis/MenuAPICalls";
+import { callGetMenuAPI } from "../../apis/MenuAPICalls";
 
 
 const Menu = ({id}) => {
@@ -11,7 +11,7 @@ const Menu = ({id}) => {
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    dispatch(callGetMenuListAPI(id));
+    dispatch(callGetMenuAPI(id));
   },[])
 
 
