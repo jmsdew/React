@@ -5,6 +5,7 @@ const Mypage = () => {
 
   const isLogin = false;
 
+
   if(!isLogin){  // 컴포넌트 단위의 에러는 컴포넌트 내부에서 처리.
     /* 
       컴포넌트 내에서 권한이나 다른 특정 상황에 의해 다른 페이지 연동하고 싶을 때
@@ -14,7 +15,6 @@ const Mypage = () => {
     */
    return <Navigate to="/login/"/>
   }
-
   return(
       <div>
         <h1>마이페이지</h1>

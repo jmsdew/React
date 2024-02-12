@@ -9,7 +9,7 @@ const MenuRegistForm = () => {
     const navigate = useNavigate();
     const [menuId, setMenuId] = useState(0);
 
-    
+    setMenuId
 
     const [registMenu, setRegistMenu] = useState(
         {

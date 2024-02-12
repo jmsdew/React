@@ -6,6 +6,11 @@ const Example = () => {
   const [genders, setGender] = useState('');
   const [age, setAge] = useState(0);
   const [con,setCon] = useState('');
+  const [result1, setResult1] = useState('');
+  const [background, setBackground] = useState('');
+  const [img1, setImg] = useState('');
+
+
 
   const onChangeHanlder = (e) => {
       setName(e.target.value);
@@ -34,7 +39,7 @@ const Example = () => {
     fetch(`https://icanhazdadjoke.com/slack`)
     .then(response => response.json())
     .then(data => {
-      setCon(data.attachments[0].text);
+      setCon(data.attachments[1].text);
     })
 
   }
@@ -48,21 +53,37 @@ const Example = () => {
 
   }
 
+ 
+
+  const NYTimes = () => {
+    fetch(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=b2f485cd2f274a5ba62325da31653420`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      setResult1(data.articles[16].title);
+      setBackground(data.articles[16].description);
+      setImg(data.articles[16].urlToImage);
+      
+    
+
+    })
+
+  }
+
 
 
 
 
   return (
     <>
-      <label>이름 입력</label>
-      <input type="text" onChange={onChangeHanlder}/>
-      <button onClick={ClickHandler}>이 사람의 성별은? </button>
-      <button onClick={ClickAge}>이 사람의 나이는?</button>
-      <button onClick={ClickCountry}>농담 생성기</button>
-      <button onClick={ClickQuote}>명언 생성기</button>
+      
+      <button onClick={NYTimes}>뉴욕타임즈</button>
       <h2>{genders}</h2>
       <h2>{age}</h2>
       <h1>{con}</h1>
+      <h1>{result1}</h1>
+      <img src={img1}/>
+      <h1>{background}</h1>
       
     </>
   )
