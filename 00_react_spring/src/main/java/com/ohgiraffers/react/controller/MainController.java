@@ -11,6 +11,6 @@ public class MainController {
 
     @GetMapping("/showMe")
     public List<String> hello(){
-        return Arrays.asList("드디어 연결됐다", "으어어어어어어어어");
+        return Arrays.asList("1번 연결 테스트", "2번 연결 테스트");
     }
 }

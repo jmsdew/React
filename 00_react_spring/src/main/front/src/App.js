@@ -1,31 +1,23 @@
 
-import {useEffect, useState} from "react";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Layout from "./layouts/Layout";
+import Main from "./page/Main";
+import MenuPage from "./page/MenuPage";
 
 
 function App() {
-  const [data, setData] = useState([]);
 
-  useEffect(() => {
-    fetch("/showMe")
-        .then((res) => {
-          return res.json();
-        })
-        .then(function (result) {
-
-          setData(result);
-            console.log(data)
-        })
-  },[]);
 
 
   return (
-      <div className="App">
-
-          <ul>
-            <li>{data[0]}</li>
-              <li>{data[1]}</li>
-          </ul>
-      </div>
+      <BrowserRouter>
+          <Routes>
+              <Route path="/" element={<Layout/>}>
+                <Route index element={<Main/>}/>
+                <Route path="menuPage" element={<MenuPage/>}/>
+              </Route>
+          </Routes>
+      </BrowserRouter>
   );
 }
 
